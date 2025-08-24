@@ -10,6 +10,8 @@ variable "tenant_id" {}
 
 variable "kubernetes_version" {}
 
+variable "vnet_id" {}
+
 variable "system_subnet_id" {}
 
 variable "ingress_subnet_id" {}

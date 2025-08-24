@@ -117,3 +117,8 @@ resource "azuread_group_member" "acr_pull" {
   member_object_id = azurerm_kubernetes_cluster.this.kubelet_identity[0].object_id
 }
 
+resource "azurerm_role_assignment" "network_contributor" {
+  scope                = var.vnet_id
+  role_definition_name = "Network Contributor"
+  principal_id         = azurerm_user_assigned_identity.this.principal_id
+}
