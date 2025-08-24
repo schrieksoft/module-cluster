@@ -118,7 +118,7 @@ resource "azuread_group_member" "acr_pull" {
 }
 
 resource "azurerm_role_assignment" "network_contributor" {
-  scope                = var.vnet_id
+  scope                = var.resource_group_id
   role_definition_name = "Network Contributor"
   principal_id         = azurerm_user_assigned_identity.this.principal_id
 }

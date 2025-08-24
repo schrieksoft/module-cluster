@@ -20,6 +20,8 @@ variable "apps_subnet_id" {}
 
 variable "resource_group_name" {}
 
+variable "resource_group_id" {}
+
 variable "zones" {
   default = ["1"]
 }
