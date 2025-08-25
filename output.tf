@@ -8,9 +8,6 @@ output "login_instructions" {
   })
 
 }
-output "name" {
-  value = azurerm_kubernetes_cluster.this.name
-}
 
 output "cluster_host" {
   value = azurerm_kubernetes_cluster.this.kube_admin_config.0.host
@@ -34,6 +31,10 @@ output "cluster_kube_config_raw" {
 output "cluster_kube_admin_config_raw" {
   value = azurerm_kubernetes_cluster.this.kube_admin_config_raw
   sensitive = true
+}
+
+output "cluster_name" {
+  value = azurerm_kubernetes_cluster.this.name
 }
 
 output "cluster_oidc_issuer_url" {
