@@ -102,7 +102,7 @@ resource "azurerm_kubernetes_cluster_node_pool" "this" {
   node_taints             = each.value.node_taints
   node_labels             = each.value.node_labels
   priority                = each.value.priority
-  eviction_policy         = each.value.eviction_policy
+  eviction_policy         = each.value.priority == "Spot" ? each.value.eviction_policy : null
 
   lifecycle {
     ignore_changes = [
