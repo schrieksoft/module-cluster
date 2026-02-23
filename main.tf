@@ -104,11 +104,14 @@ resource "azurerm_kubernetes_cluster_node_pool" "this" {
   priority                = each.value.priority
   eviction_policy         = each.value.priority == "Spot" ? each.value.eviction_policy : null
 
-  upgrade_settings {
-    drain_timeout_in_minutes      = 0
-    max_surge                     = "10%"
-    node_soak_duration_in_minutes = 0
- }
+  dynamic "upgrade_settings" {
+    for_each = each.value.priority == "Spot" ? [] : [1]
+    content {
+      drain_timeout_in_minutes      = 0
+      max_surge                     = "10%"
+      node_soak_duration_in_minutes = 0
+    }
+  }
 
   lifecycle {
     ignore_changes = [
