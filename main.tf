@@ -26,7 +26,7 @@ resource "azurerm_kubernetes_cluster" "this" {
   sku_tier                          = "Free"
   oidc_issuer_enabled               = true
   private_cluster_enabled           = false
-  azure_policy_enabled              = true
+  azure_policy_enabled              = false
   role_based_access_control_enabled = true
   open_service_mesh_enabled         = false
   dns_prefix                        = "aks"
