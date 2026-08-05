@@ -33,6 +33,7 @@ resource "azurerm_kubernetes_cluster" "this" {
 
   default_node_pool {
     name                         = "system"
+    temporary_name_for_rotation  = "systemtmp" // Without this, a vm_size change replaces the whole cluster rather than rotating the pool
     only_critical_addons_enabled = true // Setting to "true" will set the "CriticalAddonsOnly=true:NoSchedule" taint, preventing non-system applications from scheduling here
     orchestrator_version         = var.kubernetes_version
     zones                        = var.zones
